@@ -1,0 +1,55 @@
+extends ../shared/layout
+
+block main-content
+    form(method="post" enctype='multipart/form-data')
+        label(for="firstName") First Name
+        input(id="firstName" class="form-control" type="text" name="firstName" placeholder="First Name" required)
+        br
+        label(for="lastName") Last Name
+        input(id="lastName" class="form-control" type="text" name="lastName" placeholder="Last Name" required)
+        br
+        label(for="username") Username
+        input(id="username" class="form-control" type="text" name="username" placeholder="Username" required)
+        br
+        label(for="phoneNumber") Phone Number
+        input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number")
+        br
+        label(for="email") Email
+        input(id="email" class="form-control" type="email" name="email" placeholder="Email" required)
+        br
+        label(for="password") Password
+        input(id="password" class="form-control" type="password" name="password" placeholder="Password" required)
+        br
+        label(for="confirm-password") Confirm Password
+        input(id="confirm-password" class="form-control" type="password" name="confirmPassword" placeholder="Confirm password" required)
+        br
+        label(for="initiative") Initiative
+        select(id='initiative' name='initiative' class='form-control' required)
+            option Software Academy
+            option School Academy
+            option Kids Academy
+            option Algo Academy
+        br
+        label(for="season") Season
+        select(id='season' name='season' class='form-control' required)
+            option 2010
+            option 2011
+            option 2012
+            option 2013
+        br
+        label(for="picture") Profile Image
+        input(id="picture" type="file" name="picture" placeholder="Picture")
+        br
+        label(for="facebook") Facebook
+        input(id="facebook" class="form-control" type="text" name="facebook" placeholder="Facebook")
+        br
+        label(for="twitter") Twitter
+        input(id="twitter" class="form-control" type="text" name="twitter" placeholder="Twitter")
+        br
+        label(for="linkedIn") LinkedIn
+        input(id="linkedIn" class="form-control" type="text" name="linkedIn" placeholder="LinkedIn")
+        br
+        label(for="googlePlus") Google+
+        input(id="googlePlus" class="form-control" type="text" name="googlePlus" placeholder="Google+")
+        br
+        input(type="submit" class="btn btn-lg" value="Register")

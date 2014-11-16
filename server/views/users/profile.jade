@@ -1,0 +1,48 @@
+extends ../shared/layout
+block main-content
+    h1= currentUser.username
+    .row
+        .col-md-3
+            p
+            | First Name:
+            = currentUser.firstName
+            p
+            | Last Name:
+            = currentUser.lastName
+            p
+            | Email:
+            = currentUser.email
+            p
+            | Organization: #{currentUser.eventPoints.organization}
+            p
+            | Venue: #{currentUser.eventPoints.venue}
+            p
+                form(method='post' action='/profile/editPhone')
+                    | Phone:
+                    br
+                    input(type='text' name='phone' value="#{currentUser.phoneNumber || ''}")
+                    input(type='submit' value='Edit')
+
+        .col-md-9
+            img(src="#{currentUser.picture || 'pictures/default/defaultPic.png'}" width='230' height='200')
+
+    .row
+        .col-md-4
+            h3 Created by me:
+            each event in created
+                a(href='/events/#{event._id}')
+                    .panel.panel-primary
+                        .panel-heading= event.title
+        .col-md-4
+            h3 Joined by me:
+            each event in joined
+                a(href='/events/#{event._id}')
+                    .panel.panel-primary
+                        .panel-heading= event.title
+        .col-md-4
+            h3 Past events:
+            each event in passed
+                a(href='/events/#{event._id}')
+                    .panel.panel-primary
+                        .panel-heading= event.title
+

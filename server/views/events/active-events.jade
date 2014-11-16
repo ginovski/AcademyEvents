@@ -1,0 +1,7 @@
+extends ../shared/layout
+block main-content
+    each event in events
+        a(href= event._id)
+            .panel.panel-primary
+                .panel-heading= event.title
+

@@ -1,0 +1,13 @@
+extends shared/layout
+block main-content
+    h1 Welcome to Telerik Academy Events
+    if(events)
+        each event in events
+            .panel.panel-primary
+                    .panel-heading
+                        a(href='/events/#{event._id}' style='color:#fff; text-decoration: underline')= event.title
+            .panel-body
+                p Organizational: #{event.evaluation.organization}
+                p Venue: #{event.evaluation.venue}
+    else
+        h3 No passed events

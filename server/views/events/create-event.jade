@@ -1,0 +1,40 @@
+extends ../shared/layout
+block main-content
+    form(method="post")
+        label(for="title") Title
+        input(id="title" class="form-control" type="text" name="title" placeholder="Title" required)
+        br
+        label(for="description") Description
+        textarea(id="description" class="form-control" name="description" placeholder="Description" required)
+        br
+        label(for="category") Category
+        select(id="category" class="form-control" name="category" required)
+            option Academy Initiative
+            option Free Time
+            option Seminar
+            option Exam
+        br
+        label(for="initiative") Initiative
+        select(id="initiative" class="form-control" name="initiative" required)
+            option Public
+            option Software Academy
+            option School Academy
+            option Algo Academy
+            option Kids Academy
+        br
+        label(for="season") Season
+        select(id="season" class="form-control" name="season" required)
+            option Public
+            option Started 2010
+            option Started 2011
+            option Started 2012
+            option Started 2013
+        br
+        label(for="location") Location
+        input(id="location" class="form-control" type="text" name="location" placeholder="Location (separate locations with comma 23.666,23.444)")
+        br
+        label(for="date") Date
+        input(id="date" class="form-control datepicker" type="text" name="date" placeholder='mm/dd/yyyy' required)
+        br
+        input(type='submit' class='btn btn-success' value='Create')
+

@@ -1,0 +1,10 @@
+extends ../shared/layout
+block main-content
+    if(events)
+        each event in events
+            .panel.panel-primary
+                .panel-heading
+                    a(href='/events/#{event._id}' style='color:#fff; text-decoration: underline')= event.title
+    else
+        h3 No passed events
+

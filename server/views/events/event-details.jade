@@ -1,0 +1,65 @@
+extends ../shared/layout
+block main-content
+        .panel.panel-primary
+            .panel-heading
+                .row
+                    .col-md-6= event.title
+                    .col-md-6
+                        if (event.usersJoined.indexOf(currentUser.username) == -1 && event.date > Date.now())
+                            a.pull-right(href='/events/join/#{event.id}' class='btn btn-default') Join
+                        else if(event.date > Date.now())
+                            a.pull-right(href='/events/leave/#{event.id}' class='btn btn-default') Leave
+                        else
+                            span.pull-right Passed!
+            .panel-body
+                p
+                | Description:
+                = event.description
+                p
+                | Category:
+                = event.category
+                p
+                | Creator:
+                = event.creator
+                p
+                | Initiative:
+                = event.type.initiative
+                p
+                | Season:
+                = event.type.season
+                p
+                | Date:
+                = event.date.toDateString()
+                p
+                | Participants:
+                = event.usersJoined.join(',')
+                p
+                | Comments:
+                each comment in event.comments
+                    .comment
+                        = comment.user
+                        | :
+                        = comment.text
+                if(event.usersJoined.indexOf(currentUser.username) != -1 && event.date < Date.now())
+                    form(method='post', action='/events/#{event._id}/vote')
+                        .form-group.form-inline.pull-right
+                            label(for='organization') Organization: &nbsp;&nbsp;&nbsp;
+                            input(type="number" min='1' max='5' name='organization' class="form-control" style="width: 35%" id='organization' value='#{event.evaluation.organization}')
+                        br
+                        br
+                        br
+                        br
+                        .form-group.form-inline.pull-right
+                            label(for='venue') Venue: &nbsp;&nbsp;&nbsp;
+                            input(type="number" min='1' max='5' name='venue' class="form-control" style="width: 45%" id='venue' value='#{event.evaluation.venue}')
+                        br
+                        br
+                        br
+                        input.pull-right(type='submit' class='btn btn-success' value='Vote')
+        if (event.usersJoined.indexOf(currentUser.username) != -1)
+            form(method='post' action='/events/#{event._id}/comment')
+                label(for="text") Text
+                textarea(id="text" class="form-control" name="text" placeholder="Comment")
+                br
+                input(type='submit' class='btn btn-success' value='Add Comment')
+
